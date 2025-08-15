@@ -1,0 +1,26 @@
+# main.tf
+# Purpose: Provision an EC2 instance for the backend application
+
+resource "aws_instance" "app_server" {
+  ami           = "ami-0abcdef1234567890"
+  instance_type = "t3.micro"
+  tags = {
+    Name = "PrescriptionAppServer"
+  }
+}
+resource "aws_db_instance" "rds" {
+  allocated_storage    = 20
+  engine               = "mysql"
+  instance_class       = "db.t3.micro"
+  name                 = "medicationdb"
+  username             = "admin"
+  password             = "securepassword"
+  skip_final_snapshot  = true
+}
+resource "aws_lambda_function" "notify" {
+  function_name = "NotificationService"
+  handler       = "com.example.NotifyHandler"
+  runtime       = "java11"
+  role          = aws_iam_role.lambda_exec.arn
+  filename      = "build/libs/notification-service.zip"
+}
