@@ -1,0 +1,14 @@
+# Base image
+FROM openjdk:17-jdk-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy application files
+COPY ./build/libs/healthcare-app.jar .
+
+# Expose port
+EXPOSE 8080
+
+# Run the application
+CMD ["java", "-jar", "healthcare-app.jar"]
