@@ -176,7 +176,7 @@ This section explains the purpose, structure, and rationale behind each UML diag
 ├── 📁 scripts/          # Dockerfile, Terraform, SQL schema
 ├── 📁 powerpoint/       # Presentation slides
 ├── 📁 word/             # Written report and rationale
-├── 📄 README.md        # Project summary and design explanation
+├── 📄 README.md         # Project summary and design explanation
 ```
 ---
 
